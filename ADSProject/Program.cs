@@ -18,6 +18,7 @@ builder.Services.AddSingleton<IEstudiante, EstudianteRepository>();
 builder.Services.AddSingleton<IECarrera,CarreraRepository>();
 builder.Services.AddSingleton<IMateria, MateriaRepository>();
 builder.Services.AddSingleton<IProfesor, ProfesorRepository>();
+builder.Services.AddSingleton<IGrupo, GrupoRepository>();
 
 var app = builder.Build();
 

@@ -44,8 +44,6 @@ namespace ADSProject.Repositores
             }
         }
 
-        
-
         public bool EliminarProfesor(int idProfesor)
         {
             try
