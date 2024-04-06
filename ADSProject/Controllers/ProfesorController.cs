@@ -1,32 +1,30 @@
 ﻿using ADSProject.Interfaces;
 using ADSProject.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using ADSProject.Utils;
+using Microsoft.AspNetCore.Mvc;
+
 namespace ADSProject.Controllers
 {
-    [Microsoft.AspNetCore.Mvc.Route("api/materias/")]
-    public class MateriaController : ControllerBase
+    [Microsoft.AspNetCore.Mvc.Route("api/profesor/")]
+    public class ProfesorController : ControllerBase
     {
-        private readonly IMateria materia;
+        private readonly IProfesor profesor;
         private const string COD_EXITO = "000000";
         private const string COD_ERROR = "999999";
         private string pCodRespuesta;
         private string pMensajeusuario;
         private string pMensajeTecnico;
 
-        public MateriaController(IMateria materia)
+        public ProfesorController(IProfesor profesor)
         {
-            this.materia = materia;
+            this.profesor = profesor;
         }
-        [HttpPost("agregarMateria")] //FUNCIONA
-        public ActionResult<string> AgregarMateria([FromBody] Materia materia)
+        [HttpPost("agregarProfesor")] //FUNCIONA
+        public ActionResult<string> AgregarProfesor([FromBody] Profesor profesor)
         {
             try
             {
-                int contador = this.materia.AgregarMateria(materia);
+                int contador = this.profesor.AgregarProfesor(profesor);
 
                 if (contador > 0)
                 {
@@ -48,12 +46,12 @@ namespace ADSProject.Controllers
                 throw;
             }
         }
-        [HttpPut("actualizarMateria/{idMateria}")]
-        public ActionResult<string> ActualizarMateria(int idMateria, [FromBody] Materia materia)
+        [HttpPut("actualizarProfesor/{idProfesor}")]
+        public ActionResult<string> ActualizarProfesor(int idProfesor, [FromBody] Profesor profesor)
         {
             try
             {
-                int contador = this.materia.ActualizarMateria(idMateria, materia);
+                int contador = this.profesor.ActualizarProfesor(idProfesor, profesor);
 
                 if (contador > 0)
                 {
@@ -70,13 +68,10 @@ namespace ADSProject.Controllers
                     string pMensajeTecnico = $"{pCodRespuesta} || {pMensajeusuario}";
 
                     return StatusCode(500, new { pCodRespuesta, pMensajeusuario, pMensajeTecnico });
-
-              
                 }
             }
             catch (Exception ex)
             {
-
                 // Log the exception
                 Console.WriteLine($"Error: {ex.Message}");
 
@@ -84,15 +79,12 @@ namespace ADSProject.Controllers
                 return StatusCode(500, new { pCodRespuesta = "COD_ERROR", pMensajeusuario = "Error interno del servidor", pMensajeTecnico = ex.Message });
             }
         }
-
-       
-
-        [HttpDelete("eliminarMateria/{idMateria}")]
-        public ActionResult<string> EliminarMateria(int idMateria)
+        [HttpDelete("eliminarProfesor/{idProfesor}")]
+        public ActionResult<string> EliminarProfesor(int idProfesor)
         {
             try
             {
-                bool eliminado = this.materia.EliminarMateria(idMateria);
+                bool eliminado = this.profesor.EliminarProfesor(idProfesor);
 
                 if (eliminado)
                 {
@@ -114,21 +106,21 @@ namespace ADSProject.Controllers
                 throw;
             }
         }
-        [HttpGet("obtenerMateriaPorID/{idMateria}")] //FUNCIONA
-        public ActionResult<Materia> ObtenerMateriaPorID(int idMateria)
+        [HttpGet("obtenerProfesorPorID/{idProfesor}")] //FUNCIONA
+        public ActionResult<Profesor> ObtenerProfesorPorID(int idProfesor)
         {
             try
             {
-                Materia materia = this.materia.ObtenermateriaPorID(idMateria);
+                Profesor profesor = this.profesor.ObtenerprofesorPorID(idProfesor);
 
-                if (materia != null)
+                if (profesor != null)
                 {
-                    return Ok(materia);
+                    return Ok(profesor);
                 }
                 else
                 {
                     pCodRespuesta = Constants.COD_ERROR;
-                    pMensajeusuario = "No se encontraron datos del Estudinates";
+                    pMensajeusuario = "No se encontraron datos del Profesor";
                     pMensajeTecnico = pCodRespuesta + " || " + pMensajeusuario;
                     return Ok(new { pCodRespuesta, pMensajeusuario, pMensajeTecnico });
                 }
@@ -138,18 +130,19 @@ namespace ADSProject.Controllers
                 throw;
             }
         }
-        [HttpGet("obtenerMateria")] //FUNCIONA
-        public ActionResult<List<Materia>> ObtenerMateria()
+        [HttpGet("obtenerProfesor")] //FUNCIONA
+        public ActionResult<List<Profesor>> ObtenerProfesor()
         {
             try
             {
-                List<Materia> lstMaterias = this.materia.ObtenerTodosLasMaterias();
-                return Ok(lstMaterias);
+                List<Profesor> lstProfesor = this.profesor.ObtenerTodosLosProfesores();
+                return Ok(lstProfesor);
             }
             catch (Exception ex)
             {
                 throw;
             }
         }
+
     }
 }
