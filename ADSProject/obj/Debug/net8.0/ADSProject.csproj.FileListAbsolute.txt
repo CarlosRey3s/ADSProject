@@ -30,3 +30,4 @@ C:\Users\ccerr\Documents\VISUAL ESTUDIO\ADSProject\ADSProject\obj\Debug\net8.0\r
 C:\Users\ccerr\Documents\VISUAL ESTUDIO\ADSProject\ADSProject\obj\Debug\net8.0\ADSProject.pdb
 C:\Users\ccerr\Documents\VISUAL ESTUDIO\ADSProject\ADSProject\obj\Debug\net8.0\ADSProject.genruntimeconfig.cache
 C:\Users\ccerr\Documents\VISUAL ESTUDIO\ADSProject\ADSProject\obj\Debug\net8.0\ref\ADSProject.dll
+C:\Users\ccerr\Documents\VISUAL ESTUDIO\ADSProject\ADSProject\obj\Debug\net8.0\ADSProject.sourcelink.json

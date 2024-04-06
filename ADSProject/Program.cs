@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 //Configurando inyeccion de Dependencias
 builder.Services.AddSingleton<IEstudiante, EstudianteRepository>();
 builder.Services.AddSingleton<IECarrera,CarreraRepository>();
+builder.Services.AddSingleton<IMateria, MateriaRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
