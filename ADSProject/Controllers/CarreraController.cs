@@ -23,7 +23,13 @@ namespace ADSProject.Controllers
             {
                 try
                 {
-                    int contador = this.carrera.AgregarCarrera(carrera);
+                //Verificar que todad las validacioones por atributo  dekl modelo este correctas.
+                if (!ModelState.IsValid)
+                {
+                    //En caso de no cumplir con topdas las validaciones se procede a retornar una respuesta erronea.
+                    return BadRequest(ModelState);
+                }
+                int contador = this.carrera.AgregarCarrera(carrera);
 
                     if (contador > 0)
                     {
@@ -51,6 +57,12 @@ namespace ADSProject.Controllers
         {
             try
             {
+                //Verificar que todad las validacioones por atributo  dekl modelo este correctas.
+                if (!ModelState.IsValid)
+                {
+                    //En caso de no cumplir con topdas las validaciones se procede a retornar una respuesta erronea.
+                    return BadRequest(ModelState);
+                }
                 int contador = this.carrera.ActualizarCarrera(idCarrera, carrera);
 
                 if (contador > 0)

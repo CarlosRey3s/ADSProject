@@ -1,6 +1,5 @@
 ﻿using ADSProject.Interfaces;
 using ADSProject.Models;
-using ADSProject.Utils;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +25,13 @@ namespace ADSProject.Controllers
         [HttpPost("agregarEstudiante")] //FUNCIONA
         public ActionResult<string> AgregarEstudiante([FromBody] Estudiante estudiante)
         {
-            try { 
+            try {
+                //Verificar que todad las validacioones por atributo  dekl modelo este correctas.
+                if (!ModelState.IsValid)
+                {
+                    //En caso de no cumplir con topdas las validaciones se procede a retornar una respuesta erronea.
+                    return BadRequest(ModelState);
+                }
                 int contador = this.estudiante.AgregarEstudiante(estudiante);
 
                 if(contador > 0)
@@ -53,6 +58,12 @@ namespace ADSProject.Controllers
         {
             try
             {
+                //Verificar que todad las validacioones por atributo  dekl modelo este correctas.
+                if (!ModelState.IsValid)
+                {
+                    //En caso de no cumplir con topdas las validaciones se procede a retornar una respuesta erronea.
+                    return BadRequest(ModelState);
+                }
                 int contador = this.estudiante.ActualizarEstudiante(idEstudiante, estudiante);
 
                 if (contador > 0)
@@ -119,7 +130,7 @@ namespace ADSProject.Controllers
                     return Ok(estudiante);
                 }else
                 {
-                    pCodRespuesta = Constants.COD_ERROR;
+                    pCodRespuesta = COD_ERROR;
                     pMensajeusuario = "No se encontraron datos del Estudinates";
                     pMensajeTecnico = pCodRespuesta + " || " + pMensajeusuario;
                     return Ok(new { pCodRespuesta, pMensajeusuario, pMensajeTecnico });
