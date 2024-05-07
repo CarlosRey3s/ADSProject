@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ADSProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240413162452_Estudiantes")]
+    [Migration("20240427165716_Estudiantes")]
     partial class Estudiantes
     {
         /// <inheritdoc />

@@ -7,7 +7,7 @@ namespace ADSProject.Repositores
     {
         private List<Carrera> lstCarrera = new List<Carrera>
         {
-            new Carrera{IdCarrera = 1, CodigoCarrera = "01",
+            new Carrera{IdCarrera = 1, 
             NombreCarrera= "ANALISIS DE SISTEMAS"
             }
         };
