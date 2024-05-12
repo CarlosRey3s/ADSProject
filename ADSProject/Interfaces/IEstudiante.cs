@@ -12,6 +12,6 @@ namespace ADSProject.Interfaces
 
         public List<Estudiante> ObtenerTodosLosEstudinates();
 
-        public Estudiante ObtenerestudiantePorID(int idEstudiante);
+        public Estudiante ObtenerEstudiantesPorID(int idEstudiante);
     }
 }

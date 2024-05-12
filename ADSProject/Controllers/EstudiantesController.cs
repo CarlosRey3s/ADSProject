@@ -123,7 +123,7 @@ namespace ADSProject.Controllers
         {
             try
             {
-                Estudiante estudiante = this.estudiante.ObtenerestudiantePorID(idEstudiante);
+                Estudiante estudiante = this.estudiante.ObtenerEstudiantesPorID(idEstudiante);
 
                 if (estudiante != null)
                 {
